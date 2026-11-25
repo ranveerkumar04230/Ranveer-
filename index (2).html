@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study With Aspirant</title>
+<style>
+:root{--bg:#060913;--card:#0e1526;--txt:#f8fafc;--mut:#94a3b8;--pink:#ec4899;--blue:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
+body{background:var(--bg);color:var(--txt);max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:95px}
+.hide{display:none!important}
+#splash{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;transition:opacity .4s}
+.ar-gold{width:86px;height:86px;border-radius:24px;background:linear-gradient(135deg,#fde047,#eab308,#b45309);color:#000;font-size:34px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 0 35px rgba(234,179,8,.55);border:2px solid #fef08a;margin-bottom:14px}
+.ar-sm{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#fde047,#eab308,#b45309);color:#000;font-size:19px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(234,179,8,.45);border:1.5px solid #fef08a;margin-bottom:8px}
+.hdr{text-align:center;padding:18px 16px 6px}
+.hdr h1{font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.hdr h1 span{background:linear-gradient(90deg,var(--pink),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mot{margin:8px 16px 4px;padding:9px 12px;border-radius:12px;background:linear-gradient(90deg,rgba(236,72,153,.12),rgba(59,130,246,.12));border:1px solid rgba(236,72,153,.3);font-size:11.5px;font-weight:700;color:#fbcfe8;text-align:center}
+.st{font-size:10px;text-align:center;color:#22c55e;margin:4px 0;font-weight:700}
+.hero{padding:6px 16px 10px}
+.srch{width:100%;padding:12px 18px;border-radius:30px;border:1px solid rgba(59,130,246,.45);background:var(--card);color:#fff;font-size:14px;outline:none}
+.row-card{background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--pink),var(--blue)) border-box;border:1.5px solid transparent;border-radius:18px;padding:17px 18px;margin:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;box-shadow:0 4px 18px rgba(236,72,153,.12)}
+.row-title{font-size:15px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.row-sub{font-size:11px;color:var(--mut);margin-top:4px}
+.arrow{background:linear-gradient(135deg,var(--pink),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:19px;font-weight:900}
+.back-btn{width:calc(100% - 32px);margin:14px 16px;padding:13px;border-radius:30px;border:1px solid rgba(236,72,153,.4);background:var(--card);color:#f472b6;font-size:12px;font-weight:800;cursor:pointer}
+.lec-card{background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--blue),var(--pink)) border-box;border:1.5px solid transparent;border-radius:18px;padding:16px;margin:12px 16px}
+.lec-title{font-size:15px;font-weight:800;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.b-vid{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff}.b-eng{background:linear-gradient(135deg,#ec4899,#db2777);color:#fff}.b-hin{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff}.b-ppt{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff}
+.lbtn{border:none;padding:11px 8px;border-radius:12px;font-size:11px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
+.bot-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:linear-gradient(transparent,var(--bg) 35%);padding:10px 16px 12px;text-align:center;z-index:30}
+.soc-wrap{display:flex;justify-content:center;gap:14px;margin-bottom:5px}
+.soc{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:17px}
+.foot-txt{font-size:11px;color:var(--mut);font-weight:600}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;padding:12px;z-index:50}
+.mbox{background:var(--card);border:1.5px solid var(--pink);width:100%;max-width:440px;border-radius:20px;padding:16px;max-height:92vh;overflow-y:auto}
+.inp{width:100%;padding:11px;border-radius:10px;border:1px solid #334155;background:var(--bg);color:#fff;margin-bottom:10px;font-size:13px}
+.empty{text-align:center;color:var(--mut);padding:36px 20px;font-size:13px}
+</style>
+</head>
+<body>
+<div id="splash">
+  <div class="ar-gold">AR</div>
+  <div style="font-size:21px;font-weight:900;letter-spacing:1.2px">STUDY WITH <span style="color:#ec4899">ASPIRANT</span></div>
+  <div style="font-size:12px;color:#fde047;margin-top:8px;font-weight:700">"मेहनत इतनी खामोशी से करो कि सफलता शोर मचा दे!"</div>
+</div>
+
+<div class="hdr">
+  <div class="ar-sm">AR</div>
+  <h1 id="head-txt">STUDY WITH <span>ASPIRANT</span></h1>
+</div>
+<div class="mot">🔥 "सपने वो नहीं जो नींद में आते हैं, सपने वो हैं जो सोने नहीं देते!"</div>
+<div id="sync-status" class="st">🟢 Live Cloud Connected</div>
+<div class="hero"><input id="srch" class="srch" placeholder="🔍 Search batch, subject or topic..." oninput="onSearch()"></div>
+<div id="main"></div>
+<button id="back-btn" class="back-btn hide" onclick="goBack()">← BACK</button>
+
+<div class="bot-bar">
+  <div class="soc-wrap">
+    <a id="wa-link" href="https://whatsapp.com/channel/0029VbA0D1jFy" target="_blank" class="soc" style="background:#16a34a">💬</a>
+    <a id="tg-link" href="https://telegram.org" target="_blank" class="soc" style="background:#38bdf8">✈️</a>
+  </div>
+  <div class="foot-txt" id="foot-txt">⚡ Study With Aspirant • Complete GK/GS & Bihar Daroga</div>
+</div>
+
+<div id="view-m" class="modal hide" onclick="closeView()">
+  <div class="mbox" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <b id="v-tit" style="font-size:13px;color:#f472b6">Class Viewer</b>
+      <button onclick="closeView()" style="background:#ef4444;color:#fff;border:none;width:28px;height:28px;border-radius:50%;font-weight:bold">✕</button>
+    </div>
+    <div id="v-frame"></div>
+  </div>
+</div>
+
+<div id="adm-m" class="modal hide" onclick="this.classList.add('hide')">
+  <div class="mbox" onclick="event.stopPropagation()">
+    <h3 style="color:#f472b6;margin-bottom:10px">➕ नया लेक्चर / नोट्स जोड़ें</h3>
+    <input id="a-bt" class="inp" placeholder="Batch नाम (जैसे: PARMAR 4.0)">
+    <input id="a-bt-sub" class="inp" placeholder="Batch Subtitle (जैसे: BY PARMAR SIR)">
+    <input id="a-sb" class="inp" placeholder="Subject नाम (जैसे: ANCIENT HISTORY)">
+    <input id="a-lc" class="inp" placeholder="Lecture नाम (जैसे: STONE AGE LECTURE 1)">
+    <input id="a-vd" class="inp" placeholder="YouTube Video लिंक">
+    <input id="a-en" class="inp" placeholder="English Notes PDF लिंक">
+    <input id="a-hi" class="inp" placeholder="Hindi Notes PDF लिंक">
+    <input id="a-pp" class="inp" placeholder="PPT / Class PDF लिंक">
+    <button id="save-btn" onclick="saveLec()" style="width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#ec4899,#3b82f6);color:#fff;font-weight:800;cursor:pointer;margin-bottom:14px">लेक्चर सेव करें</button>
+    <hr style="border:0;border-top:1px solid #334155;margin-bottom:10px">
+    <h4 style="color:#38bdf8;margin-bottom:8px">🔗 WhatsApp & Telegram लिंक</h4>
+    <input id="s-wa" class="inp" placeholder="WhatsApp लिंक">
+    <input id="s-tg" class="inp" placeholder="Telegram लिंक">
+    <button id="soc-btn" onclick="saveSocial()" style="width:100%;padding:11px;border:none;border-radius:10px;background:#16a34a;color:#fff;font-weight:800;cursor:pointer">लिंक्स सेव करें</button>
+  </div>
+</div>
+
+<script>
+setTimeout(()=>{const s=document.getElementById("splash");if(s){s.style.opacity="0";setTimeout(()=>s.remove(),400);}},1300);
+
+const defaultDB = [
+  { name: "PARMAR 4.0", sub: "BY PARMAR SIR • GK & GS COMPLETE", subjects: [
+    { name: "BIOLOGY", lecs: [] }, { name: "PHYSICS", lecs: [] }, { name: "CHEMISTRY", lecs: [] },
+    { name: "ECONOMICS", lecs: [] }, { name: "STATIC G.K", lecs: [] }, { name: "POLITY", lecs: [] },
+    { name: "ANCIENT HISTORY", lecs: [] }, { name: "MEDIEVAL HISTORY", lecs: [] }, { name: "MODERN HISTORY", lecs: [] },
+    { name: "GEOGRAPHY", lecs: [] }, { name: "ENVIRONMENT AND ECOLOGY", lecs: [] }, { name: "CURRENT AFFAIRS", lecs: [] }
+  ]},
+  { name: "SCIENCE MAGNET", sub: "SCIENCE SPECIAL BATCH • BIO, PHY, CHEM", subjects: [
+    { name: "BIOLOGY", lecs: [] }, { name: "PHYSICS", lecs: [] }, { name: "CHEMISTRY", lecs: [] }
+  ]},
+  { name: "GKGS MASTI", sub: "BY JAGDEV SIR • BIHAR DAROGA BATCH", subjects: [
+    { name: "BIHAR SPECIAL GK", lecs: [] }, { name: "HISTORY", lecs: [] }, { name: "POLITY", lecs: [] },
+    { name: "GEOGRAPHY", lecs: [] }, { name: "GENERAL SCIENCE", lecs: [] }, { name: "CURRENT AFFAIRS", lecs: [] }
+  ]}
+];
+
+let batches = JSON.parse(localStorage.getItem("swa_batches")) || JSON.parse(JSON.stringify(defaultDB));
+let socials = JSON.parse(localStorage.getItem("swa_socials")) || { wa: "https://whatsapp.com/channel/0029VbA0D1jFy", tg: "https://telegram.org" };
+let selBatch = null, selSub = null;
+const statusEl = document.getElementById("sync-status");
+
+function applySocials() {
+  document.getElementById("wa-link").href = socials.wa || "https://whatsapp.com/channel/0029VbA0D1jFy";
+  document.getElementById("tg-link").href = socials.tg || "https://telegram.org";
+}
+applySocials();
+
+async function loadCloud() {
+  try {
+    const res = await fetch("https://kvdb.io/A2x9KmPqR7vL5nT8wY3zJ/study_aspirant_db", { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.list && data.list.length) {
+        batches = data.list;
+        localStorage.setItem("swa_batches", JSON.stringify(batches));
+      }
+      if (data && data.socials) {
+        socials = data.socials;
+        localStorage.setItem("swa_socials", JSON.stringify(socials));
+        applySocials();
+      }
+    }
+    statusEl.textContent = "🟢 Live Cloud Synced";
+    render();
+  } catch (e) {
+    statusEl.textContent = "🟢 Ready";
+  }
+}
+
+async function pushCloud() {
+  localStorage.setItem("swa_batches", JSON.stringify(batches));
+  localStorage.setItem("swa_socials", JSON.stringify(socials));
+  const res = await fetch("https://kvdb.io/A2x9KmPqR7vL5nT8wY3zJ/study_aspirant_db", {
+    method: "POST",
+    body: JSON.stringify({ list: batches, socials: socials })
+  });
+  if (!res.ok) throw new Error("Network issue");
+  statusEl.textContent = "🟢 Live Cloud Synced";
+  render();
+}
+
+function onSearch() {
+  const val = document.getElementById("srch").value.trim().toLowerCase();
+  if (val === "#admin23") {
+    document.getElementById("srch").value = "";
+    if (selBatch !== null) document.getElementById("a-bt").value = batches[selBatch].name;
+    if (selBatch !== null && selSub !== null) document.getElementById("a-sb").value = batches[selBatch].subjects[selSub].name;
+    document.getElementById("s-wa").value = socials.wa || "";
+    document.getElementById("s-tg").value = socials.tg || "";
+    document.getElementById("adm-m").classList.remove("hide");
+  }
+  render();
+}
+
+function render() {
+  const q = document.getElementById("srch").value.trim().toLowerCase();
+  const main = document.getElementById("main"), backBtn = document.getElementById("back-btn"), headTxt = document.getElementById("head-txt"), footTxt = document.getElementById("foot-txt");
+  main.innerHTML = "";
+
+  if (selBatch === null) {
+    backBtn.classList.add("hide");
+    headTxt.innerHTML = `STUDY WITH <span>ASPIRANT</span>`;
+    footTxt.textContent = "⚡ Study With Aspirant • Complete GK/GS & Bihar Daroga";
+    const list = batches.filter(b => b.name.toLowerCase().includes(q) || (b.sub && b.sub.toLowerCase().includes(q)));
+    if (!list.length) return main.innerHTML = `<div class="empty">No batches found</div>`;
+    list.forEach(b => {
+      main.innerHTML += `<div class="row-card" onclick="openBatch(${batches.indexOf(b)})"><div><div class="row-title">${b.name}</div><div class="row-sub">${b.sub||''}</div></div><span class="arrow">→</span></div>`;
+    });
+    return;
+  }
+
+  const batch = batches[selBatch];
+  if (!batch) { selBatch = null; return render(); }
+  backBtn.classList.remove("hide");
+  const parts = batch.name.split(" "), lastWord = parts.length > 1 ? parts.pop() : "";
+  headTxt.innerHTML = `${parts.join(" ")} <span>${lastWord}</span>`;
+  footTxt.textContent = `⚡ ${batch.name} • ${batch.sub || ''}`;
+
+  if (selSub === null) {
+    backBtn.textContent = "← BACK TO BATCHES";
+    const subs = batch.subjects.filter(s => s.name.toLowerCase().includes(q));
+    if (!subs.length) return main.innerHTML = `<div class="empty">No subjects found</div>`;
+    subs.forEach(s => {
+      main.innerHTML += `<div class="row-card" onclick="openSub(${batch.subjects.indexOf(s)})"><div><div class="row-title">${s.name}</div><div class="row-sub">${s.lecs.length} Lectures Available</div></div><span class="arrow">→</span></div>`;
+    });
+    return;
+  }
+
+  const sub = batch.subjects[selSub];
+  if (!sub) { selSub = null; return render(); }
+  backBtn.textContent = "← BACK TO SUBJECTS";
+  const lecs = sub.lecs.filter(l => l.title.toLowerCase().includes(q));
+  if (!lecs.length) return main.innerHTML = `<div class="empty">${sub.name} में अभी कोई लेक्चर नहीं जुड़ा है।</div>`;
+
+  lecs.forEach(l => {
+    const t = l.title.replace(/'/g,"\'");
+    main.innerHTML += `<div class="lec-card"><div class="lec-title">${l.title}</div><div class="grid2">
+      ${l.vid ? `<button class="lbtn b-vid" onclick="openMedia('${t}','${l.vid}','vid')">▶ WATCH VIDEO</button>` : `<button class="lbtn" style="background:#1e293b;color:#64748b" disabled>NO VIDEO</button>`}
+      ${l.eng ? `<button class="lbtn b-eng" onclick="openMedia('${t}','${l.eng}','pdf')">📄 ENG NOTES</button>` : `<button class="lbtn" style="background:#1e293b;color:#64748b" disabled>NO ENG PDF</button>`}
+      ${l.hin ? `<button class="lbtn b-hin" onclick="openMedia('${t}','${l.hin}','pdf')">📄 HIN NOTES</button>` : `<button class="lbtn" style="background:#1e293b;color:#64748b" disabled>NO HIN PDF</button>`}
+      ${l.ppt ? `<button class="lbtn b-ppt" onclick="openMedia('${t}','${l.ppt}','pdf')">📊 CLASS PPT</button>` : `<button class="lbtn" style="background:#1e293b;color:#64748b" disabled>NO PPT</button>`}
+    </div></div>`;
+  });
+}
+
+function openBatch(i) { selBatch = i; document.getElementById("srch").value = ""; render(); }
+function openSub(i) { selSub = i; document.getElementById("srch").value = ""; render(); }
+function goBack() { document.getElementById("srch").value = ""; if (selSub !== null) selSub = null; else selBatch = null; render(); }
+
+function openMedia(title, url, type) {
+  document.getElementById("v-tit").textContent = title;
+  let src = url;
+  if (type === "vid") {
+    let id = "";
+    if (url.includes("watch?v=")) id = url.split("watch?v=")[1].split("&")[0];
+    else if (url.includes("youtu.be/")) id = url.split("youtu.be/")[1].split("?")[0];
+    else if (url.includes("youtube.com/live/")) id = url.split("youtube.com/live/")[1].split("?")[0];
+    if (id) src = `https://www.youtube.com/embed/${id}`;
+    document.getElementById("v-frame").innerHTML = `<iframe width="100%" height="230" style="border-radius:12px;border:none" src="${src}" allowfullscreen></iframe>`;
+  } else {
+    if (url.includes("drive.google.com") && url.includes("/view")) src = url.replace("/view", "/preview");
+    document.getElementById("v-frame").innerHTML = `<div style="position:relative"><iframe width="100%" height="420" style="border-radius:12px;border:none;background:#fff" src="${src}" sandbox="allow-scripts allow-same-origin"></iframe><div style="position:absolute;top:0;right:0;width:55px;height:55px;z-index:10"></div></div>`;
+  }
+  document.getElementById("view-m").classList.remove("hide");
+}
+function closeView() { document.getElementById("v-frame").innerHTML = ""; document.getElementById("view-m").classList.add("hide"); }
+
+async function saveLec() {
+  const btName = document.getElementById("a-bt").value.trim().toUpperCase(), btSub = document.getElementById("a-bt-sub").value.trim().toUpperCase() || "COMPLETE BATCH";
+  const sbName = document.getElementById("a-sb").value.trim().toUpperCase(), lcTitle = document.getElementById("a-lc").value.trim().toUpperCase();
+  const vid = document.getElementById("a-vd").value.trim(), eng = document.getElementById("a-en").value.trim(), hin = document.getElementById("a-hi").value.trim(), ppt = document.getElementById("a-pp").value.trim();
+  if (!btName || !sbName || !lcTitle) return alert("Batch, Subject और Lecture नाम ज़रूरी हैं!");
+  const btn = document.getElementById("save-btn"); btn.textContent = "Saving..."; btn.disabled = true;
+  let bObj = batches.find(b => b.name.toUpperCase() === btName);
+  if (!bObj) { bObj = { name: btName, sub: btSub, subjects: [] }; batches.push(bObj); }
+  let sObj = bObj.subjects.find(s => s.name.toUpperCase() === sbName);
+  if (!sObj) { sObj = { name: sbName, lecs: [] }; bObj.subjects.push(sObj); }
+  sObj.lecs.push({ title: lcTitle, vid, eng, hin, ppt });
+  try {
+    await pushCloud();
+    document.getElementById("adm-m").classList.add("hide");
+    ["a-lc","a-vd","a-en","a-hi","a-pp"].forEach(i => document.getElementById(i).value = "");
+    alert("✅ लेक्चर सेव हो गया! सभी स्टूडेंट्स को दिखेगा।");
+  } catch (e) { alert("❌ इंटरनेट चेक करें: " + e.message); }
+  finally { btn.textContent = "लेक्चर सेव करें"; btn.disabled = false; }
+}
+
+async function saveSocial() {
+  let wa = document.getElementById("s-wa").value.trim(), tg = document.getElementById("s-tg").value.trim();
+  if (wa && !wa.startsWith("http")) wa = "https://wa.me/" + wa.replace(/[^0-9]/g, "");
+  if (tg && !tg.startsWith("http")) tg = "https://t.me/" + tg.replace("@", "");
+  socials = { wa: wa || "https://whatsapp.com/channel/0029VbA0D1jFy", tg: tg || "https://telegram.org" };
+  applySocials();
+  const btn = document.getElementById("soc-btn"); btn.textContent = "Saving...";
+  try {
+    await pushCloud();
+    document.getElementById("adm-m").classList.add("hide");
+    alert("✅ लिंक्स अपडेट हो गए!");
+  } catch (e) { alert("❌ इंटरनेट चेक करें: " + e.message); }
+  finally { btn.textContent = "लिंक्स सेव करें"; }
+}
+
+render();
+loadCloud();
+</script>
+</body>
+</html>
